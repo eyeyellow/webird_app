@@ -13,12 +13,15 @@ var config = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
   },
-  module : {
-    loaders : [
+  module: {
+    loaders: [
       {
-        test : /\.jsx?/,
-        include : APP_DIR,
-        loader : 'babel'
+        test: /\.jsx?$/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   }
