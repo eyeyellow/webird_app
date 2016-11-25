@@ -1,0 +1,32 @@
+{
+  "birds": [{
+      "species": "American Robin",
+      "location": "San Francisco",
+      "count": "4",
+      "vegetation": "dogwood",
+      "habitat": "urban",
+      "behavior": "displaying"
+     }, {
+      "species": "Yellow-rumped warbler",
+      "location": "Point Reyes National Seashore",
+      "count": "2",
+      "vegetation": "sycamore",
+      "habitat": "forest",
+      "behavior": "foraging"
+    }, {
+      "species": "Snowy Egret",
+      "location": "Point Reyes National Seashore",
+      "count": "1",
+      "vegetation": "saltgrass",
+      "habitat": "estuary",
+      "behavior": "stalking"
+    }, {
+      "species": "American Bald Eagle",
+      "location": "Yosemite National Park",
+      "count": "2",
+      "vegetation": "Ponderosa pine",
+      "habitat": "conifer forest",
+      "behavior": "chillin'"
+    }
+  ]
+}
