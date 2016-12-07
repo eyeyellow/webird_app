@@ -47,31 +47,12 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var List = __webpack_require__(158);
 
-	var _require = __webpack_require__(159),
+	var _require = __webpack_require__(158),
 	    render = _require.render;
 
-	var _require2 = __webpack_require__(160),
+	var _require2 = __webpack_require__(159),
 	    birds = _require2.birds;
-
-	var App = React.createClass({
-	  displayName: 'App',
-
-
-	  displayBirds: function displayBirds(birdArray) {
-	    birdArray.forEach(function (bird) {
-	      console.log(bird);
-	    });
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(List, { birds: birds })
-	    );
-	  }
-	});
 
 	render(React.createElement(App, { birds: birds }), document.getElementById('app'));
 
@@ -19815,77 +19796,10 @@
 
 	'use strict';
 
-	var React = __webpack_require__(1);
-
-	var _require = __webpack_require__(159),
-	    render = _require.render;
-
-	var List = React.createClass({
-	  displayName: 'List',
-
-	  render: function render() {
-	    var birds = this.props.birds.map(function (bird) {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h1',
-	          null,
-	          'species: ',
-	          bird.species
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          'location: ',
-	          bird.location
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          'count: ',
-	          bird.count
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          'vegetation: ',
-	          bird.vegetation
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          'habitat: ',
-	          bird.habitat
-	        ),
-	        React.createElement(
-	          'p',
-	          null,
-	          'behavior: ',
-	          bird.behavior
-	        )
-	      );
-	    });
-	    return React.createElement(
-	      'div',
-	      null,
-	      birds
-	    );
-	  }
-	});
-
-	module.exports = List;
-
-/***/ },
-/* 159 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	module.exports = __webpack_require__(3);
 
 /***/ },
-/* 160 */
+/* 159 */
 /***/ function(module, exports) {
 
 	module.exports = {
