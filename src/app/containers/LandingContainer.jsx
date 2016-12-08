@@ -4,7 +4,9 @@ const Landing = require('../components/Landing')
 const LandingContainer = React.createClass({
   render() {
     return(
-      <Landing />
+      <div>
+        <Landing />
+      </div>
     )
   }
 })
