@@ -1,6 +1,6 @@
 const React = require('react');
 const { render } = require('react-dom');
-const { birds } = require('../public/data');
+const routes = require('./config/routes')
 
 
-render(<App birds={birds} />, document.getElementById('app'));
+render(routes, document.getElementById('app'));

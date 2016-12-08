@@ -1,5 +1,6 @@
 const React = require('react');
-const List = require('./components/List');
+const List = require('../components/List');
+const { birds } = require('../../public/data');
 
 
 const ListContainer = React.createClass({

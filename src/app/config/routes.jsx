@@ -1,2 +1,20 @@
 const React = require('react');
-const ReactRouter
+const ReactRouter = require('react-router');
+const hashHistory = ReactRouter.hashHistory;
+const IndexRoute = ReactRouter.IndexRoute;
+const Router = ReactRouter.Router;
+const Route = ReactRouter.Route;
+const Main = require('../components/Main')
+const ListContainer = require('../containers/ListContainer')
+const LandingContainer = require('../containers/LandingContainer')
+
+const routes = (
+  <Router history={hashHistory}>
+    <Route path='/' component={Main}>
+      <IndexRoute component={LandingContainer} />
+      <Route path='ListContainer' component={ListContainer} />
+    </Route>
+  </Router>
+)
+
+module.exports = routes
