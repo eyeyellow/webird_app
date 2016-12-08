@@ -19812,6 +19812,8 @@
 	var Main = __webpack_require__(223);
 	var ListContainer = __webpack_require__(225);
 	var LandingContainer = __webpack_require__(228);
+	var About = __webpack_require__(230);
+	var Login = __webpack_require__(231);
 
 	var routes = React.createElement(
 	  Router,
@@ -19820,7 +19822,9 @@
 	    Route,
 	    { path: '/', component: Main },
 	    React.createElement(IndexRoute, { component: LandingContainer }),
-	    React.createElement(Route, { path: 'ListContainer', component: ListContainer })
+	    React.createElement(Route, { path: 'ListContainer', component: ListContainer }),
+	    React.createElement(Route, { path: 'About', component: About }),
+	    React.createElement(Route, { path: 'Login', component: Login })
 	  )
 	);
 
@@ -25789,33 +25793,41 @@
 	  displayName: 'NavBar',
 	  render: function render() {
 	    return React.createElement(
-	      'div',
-	      { className: 'navbar' },
+	      'nav',
+	      { className: 'navbar navbar-default' },
 	      React.createElement(
-	        Link,
-	        { to: 'Home' },
+	        'div',
+	        { className: 'collapse navbar-collapse' },
 	        React.createElement(
-	          'button',
-	          { type: 'button', className: 'btn btn-success' },
-	          'Home'
-	        )
-	      ),
-	      React.createElement(
-	        Link,
-	        { to: 'About' },
-	        React.createElement(
-	          'button',
-	          { type: 'button', className: 'btn btn-success' },
-	          'About'
-	        )
-	      ),
-	      React.createElement(
-	        Link,
-	        { to: 'Login' },
-	        React.createElement(
-	          'button',
-	          { type: 'button', className: 'btn btn-success' },
-	          'Login'
+	          'ul',
+	          { className: 'nav navbar-nav' },
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(
+	              Link,
+	              { to: 'ListContainer' },
+	              'Home'
+	            )
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(
+	              Link,
+	              { to: 'About' },
+	              'About'
+	            )
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(
+	              Link,
+	              { to: 'Login' },
+	              'Login'
+	            )
+	          )
 	        )
 	      )
 	    );
@@ -26016,6 +26028,74 @@
 	});
 
 	module.exports = Landing;
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var About = React.createClass({
+	  displayName: 'About',
+	  render: function render() {
+	    return React.createElement(
+	      'p',
+	      null,
+	      'This is a schpeal about WeBird, and its LIT'
+	    );
+	  }
+	});
+
+	module.exports = About;
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var ReactRouter = __webpack_require__(160);
+	var Link = ReactRouter.Link;
+
+	var Login = React.createClass({
+	  displayName: 'Login',
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'form',
+	        null,
+	        React.createElement(
+	          'label',
+	          { htmlFor: 'email' },
+	          'Email'
+	        ),
+	        React.createElement('input', { type: 'text', name: 'email', id: 'email' }),
+	        React.createElement(
+	          'label',
+	          { htmlFor: 'password' },
+	          'Password'
+	        ),
+	        React.createElement('input', { type: 'password', name: 'password', id: 'password' }),
+	        React.createElement(
+	          Link,
+	          { to: 'ListContainer' },
+	          React.createElement(
+	            'button',
+	            { type: 'button' },
+	            'Submit'
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Login;
 
 /***/ }
 /******/ ]);

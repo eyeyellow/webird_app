@@ -5,17 +5,27 @@ const Link = ReactRouter.Link;
 const NavBar = React.createClass({
   render() {
     return (
-      <div className='navbar'>
-        <Link to='Home'>
-          <button type='button' className='btn btn-success'>Home</button>
-        </Link>
-        <Link to='About'>
-          <button type='button' className='btn btn-success'>About</button>
-        </Link>
-        <Link to='Login'>
-          <button type='button' className='btn btn-success'>Login</button>
-        </Link>
-      </div>
+      <nav className='navbar navbar-default'>
+        <div className='collapse navbar-collapse'>
+          <ul className='nav navbar-nav'>
+            <li>
+              <Link to='ListContainer'>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to='About'>
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to='Login'>
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     )
   }
 })
