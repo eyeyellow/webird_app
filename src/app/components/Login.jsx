@@ -5,14 +5,15 @@ const Link = ReactRouter.Link;
 const Login = React.createClass({
   render() {
     return (
-      <div>
+      <div className='center form-container'>
+        <h2>Log In</h2>
         <form>
-          <label htmlFor="email">Email</label>
-          <input type="text" name="email" id="email"></input>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password"></input>
-          <Link to="ListContainer">
-            <button type="button">Submit</button>
+          <label htmlFor="email">Email</label><br />
+          <input type="text" name="email" id="email"></input><br />
+          <label htmlFor="password">Password</label><br />
+          <input type="password" name="password" id="password"></input><br />
+          <Link to="ListContainer"><br />
+            <button type='button' className='btn btn-success'>Submit</button>
           </Link>
         </form>
       </div>
