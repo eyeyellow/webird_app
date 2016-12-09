@@ -1,0 +1,9 @@
+.center {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form-container {
+  border: black 1px solid;
+}

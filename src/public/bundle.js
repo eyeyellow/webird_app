@@ -19811,7 +19811,7 @@
 	var Route = ReactRouter.Route;
 	var Main = __webpack_require__(223);
 	var ListContainer = __webpack_require__(225);
-	var LandingContainer = __webpack_require__(228);
+	var SignupContainer = __webpack_require__(232);
 	var About = __webpack_require__(230);
 	var Login = __webpack_require__(231);
 
@@ -19821,7 +19821,7 @@
 	  React.createElement(
 	    Route,
 	    { path: '/', component: Main },
-	    React.createElement(IndexRoute, { component: LandingContainer }),
+	    React.createElement(IndexRoute, { component: SignupContainer }),
 	    React.createElement(Route, { path: 'ListContainer', component: ListContainer }),
 	    React.createElement(Route, { path: 'About', component: About }),
 	    React.createElement(Route, { path: 'Login', component: Login })
@@ -25977,59 +25977,8 @@
 	};
 
 /***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var Landing = __webpack_require__(229);
-
-	var LandingContainer = React.createClass({
-	  displayName: 'LandingContainer',
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(Landing, null)
-	    );
-	  }
-	});
-
-	module.exports = LandingContainer;
-
-/***/ },
-/* 229 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var React = __webpack_require__(1);
-	var ReactRouter = __webpack_require__(160);
-	var Link = ReactRouter.Link;
-
-	var Landing = React.createClass({
-	  displayName: 'Landing',
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        Link,
-	        { to: '/ListContainer' },
-	        React.createElement(
-	          'button',
-	          { type: 'button', className: 'btn btn-success' },
-	          'Click me'
-	        )
-	      )
-	    );
-	  }
-	});
-
-	module.exports = Landing;
-
-/***/ },
+/* 228 */,
+/* 229 */,
 /* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -26065,7 +26014,12 @@
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'center form-container' },
+	      React.createElement(
+	        'h2',
+	        null,
+	        'Log In'
+	      ),
 	      React.createElement(
 	        'form',
 	        null,
@@ -26074,19 +26028,24 @@
 	          { htmlFor: 'email' },
 	          'Email'
 	        ),
+	        React.createElement('br', null),
 	        React.createElement('input', { type: 'text', name: 'email', id: 'email' }),
+	        React.createElement('br', null),
 	        React.createElement(
 	          'label',
 	          { htmlFor: 'password' },
 	          'Password'
 	        ),
+	        React.createElement('br', null),
 	        React.createElement('input', { type: 'password', name: 'password', id: 'password' }),
+	        React.createElement('br', null),
 	        React.createElement(
 	          Link,
 	          { to: 'ListContainer' },
+	          React.createElement('br', null),
 	          React.createElement(
 	            'button',
-	            { type: 'button' },
+	            { type: 'button', className: 'btn btn-success' },
 	            'Submit'
 	          )
 	        )
@@ -26096,6 +26055,145 @@
 	});
 
 	module.exports = Login;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Signup = __webpack_require__(233);
+
+	var SignupContainer = React.createClass({
+	  displayName: 'SignupContainer',
+	  getInitialState: function getInitialState() {
+	    return {
+	      username: '',
+	      email: '',
+	      password: '',
+	      confirm_password: ''
+	    };
+	  },
+	  handleUpdateUserName: function handleUpdateUserName(event) {
+	    this.setState({
+	      username: event.target.value
+	    });
+	  },
+	  handleUpdateEmail: function handleUpdateEmail(event) {
+	    this.setState({
+	      email: event.target.value
+	    });
+	  },
+	  handleUpdatePassword: function handleUpdatePassword(event) {
+	    this.setState({
+	      password: event.target.value
+	    });
+	  },
+	  handleUpdateConfirmPassword: function handleUpdateConfirmPassword(event) {
+	    this.setState({
+	      confirm_password: event.target.value
+	    });
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'center' },
+	      React.createElement(Signup, {
+	        userSubmit: this.state,
+	        onUpdateUserName: this.handleUpdateUserName,
+	        onUpdatePassword: this.handleUpdatePassword,
+	        onUpdateConfirmPassword: this.handleUpdateConfirmPassword,
+	        onUpdateEmail: this.handleUpdateEmail,
+	        username: this.state.username })
+	    );
+	  }
+	});
+
+	module.exports = SignupContainer;
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var ReactRouter = __webpack_require__(160);
+	var Link = ReactRouter.Link;
+
+	var Signup = React.createClass({
+	  displayName: 'Signup',
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'h1',
+	        null,
+	        'Welcome to WeBird'
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'center form-container' },
+	        React.createElement(
+	          'h2',
+	          null,
+	          'Sign Up'
+	        ),
+	        console.log(this.props.userSubmit),
+	        React.createElement(
+	          'form',
+	          null,
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'username' },
+	            'Username'
+	          ),
+	          React.createElement('br', null),
+	          React.createElement('input', { type: 'text', name: 'username', id: 'username', value: this.props.userSubmit.username, onChange: this.props.onUpdateUserName }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'email' },
+	            'Email'
+	          ),
+	          React.createElement('br', null),
+	          React.createElement('input', { type: 'text', name: 'email', id: 'email', value: this.props.userSubmit.email, onChange: this.props.onUpdateEmail }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'password' },
+	            'Password'
+	          ),
+	          React.createElement('br', null),
+	          React.createElement('input', { type: 'password', name: 'password', id: 'password', value: this.props.userSubmit.password, onChange: this.props.onUpdatePassword }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            'label',
+	            { htmlFor: 'confirm_password' },
+	            'Confirm Password'
+	          ),
+	          React.createElement('br', null),
+	          React.createElement('input', { type: 'password', name: 'confirm_password', id: 'confirm_password', value: this.props.userSubmit.confirm_password, onChange: this.props.onUpdateConfirmPassword }),
+	          React.createElement('br', null),
+	          React.createElement(
+	            Link,
+	            { to: 'ListContainer' },
+	            React.createElement('br', null),
+	            React.createElement(
+	              'button',
+	              { type: 'button', className: 'btn btn-success' },
+	              'Submit'
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = Signup;
 
 /***/ }
 /******/ ]);

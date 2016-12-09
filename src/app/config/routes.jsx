@@ -6,14 +6,14 @@ const Router = ReactRouter.Router;
 const Route = ReactRouter.Route;
 const Main = require('../components/Main')
 const ListContainer = require('../containers/ListContainer')
-const LandingContainer = require('../containers/LandingContainer')
+const SignupContainer = require('../containers/SignupContainer')
 const About = require('../components/About')
 const Login = require('../components/Login')
 
 const routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
-      <IndexRoute component={LandingContainer} />
+      <IndexRoute component={SignupContainer} />
       <Route path='ListContainer' component={ListContainer} />
       <Route path='About' component={About} />
       <Route path='Login' component={Login} />
