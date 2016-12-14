@@ -8,7 +8,7 @@ const Main = require('../components/Main')
 const ListContainer = require('../containers/ListContainer')
 const SignupContainer = require('../containers/SignupContainer')
 const About = require('../components/About')
-const Login = require('../components/Login')
+const LoginContainer = require('../containers/LoginContainer')
 
 const routes = (
   <Router history={hashHistory}>
@@ -16,7 +16,7 @@ const routes = (
       <IndexRoute component={SignupContainer} />
       <Route path='ListContainer' component={ListContainer} />
       <Route path='About' component={About} />
-      <Route path='Login' component={Login} />
+      <Route path='Login' component={LoginContainer} />
     </Route>
   </Router>
 )
