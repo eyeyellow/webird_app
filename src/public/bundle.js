@@ -26180,11 +26180,6 @@
 	        'Log In'
 	      ),
 	      React.createElement(
-	        'div',
-	        null,
-	        this.props.loggedInStatus
-	      ),
-	      React.createElement(
 	        'form',
 	        { onSubmit: this.handleSubmit },
 	        React.createElement(

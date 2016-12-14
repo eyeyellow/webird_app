@@ -30,7 +30,6 @@ const Login = React.createClass({
     return (
       <div className='center form-container'>
         <h2>Log In</h2>
-        <div>{this.props.loggedInStatus}</div>
         <form onSubmit = {this.handleSubmit} >
           <label htmlFor="email">Email</label><br />
           <input type="text" name="email" id="email"
