@@ -19813,7 +19813,7 @@
 	var ListContainer = __webpack_require__(225);
 	var SignupContainer = __webpack_require__(228);
 	var About = __webpack_require__(230);
-	var LoginContainer = __webpack_require__(231);
+	var LoginContainer = __webpack_require__(279);
 
 	var routes = React.createElement(
 	  Router,
@@ -26142,70 +26142,6 @@
 
 	'use strict';
 
-	var Login = __webpack_require__(232);
-	var React = __webpack_require__(1);
-	var axios = __webpack_require__(233);
-
-	var LoginContainer = React.createClass({
-	  displayName: 'LoginContainer',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      data: []
-	    };
-	  },
-
-	  handleLoginSubmit: function handleLoginSubmit(credentials) {
-	    var email = credentials.email;
-	    var password = credentials.password;
-	    console.log(credentials);
-
-	    var url = 'http://localhost:3000/login?email=' + email + "&password=" + password;
-
-	    var request = new Request(url, {
-	      method: 'POST',
-	      mode: 'no-cors',
-	      headers: new Headers({
-	        'Content-Type': 'application/json'
-	      })
-	    });
-
-	    return fetch(request).then(function (response) {
-	      console.log(response.ok);
-	    }).catch(function (error) {
-	      return error;
-	    });
-	    // $.ajax({
-	    //   url: 'http://localhost:3000/login?email=' + email + "&password=" + password,
-	    //   data: credentials,
-	    //   type: 'POST',
-	    //   crossDomain: true,
-	    //   success: function(data) {
-	    //     this.setState({data: data})
-	    //   }.bind(this),
-	    //   error: function() {
-	    //     console.error("unsuccessful")
-	    //   }
-	    // })
-	  },
-
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(Login, { onLoginSubmit: this.handleLoginSubmit })
-	    );
-	  }
-	});
-
-	module.exports = LoginContainer;
-
-/***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var React = __webpack_require__(1);
 	var ReactRouter = __webpack_require__(160);
 	var Link = ReactRouter.Link;
@@ -26225,7 +26161,7 @@
 	    event.preventDefault();
 	    var email = this.state.email;
 	    var password = this.state.password;
-	    this.props.onLoginSubmit({ email: email, password: password });
+	    this.props.onLoginSubmit({ email: email, password: password }).then(console.log(this.props));
 	  },
 
 	  setValue: function setValue(field, event) {
@@ -26242,6 +26178,11 @@
 	        'h2',
 	        null,
 	        'Log In'
+	      ),
+	      React.createElement(
+	        'div',
+	        null,
+	        this.props.loggedInStatus
 	      ),
 	      React.createElement(
 	        'form',
@@ -26267,14 +26208,9 @@
 	        }),
 	        React.createElement('br', null),
 	        React.createElement(
-	          Link,
-	          { to: 'ListContainer' },
-	          React.createElement('br', null),
-	          React.createElement(
-	            'button',
-	            { type: 'button', className: 'btn btn-success', onClick: this.handleSubmit },
-	            'Submit'
-	          )
+	          'button',
+	          { type: 'submit', className: 'btn btn-success' },
+	          'Submit'
 	        )
 	      )
 	    );
@@ -26284,27 +26220,142 @@
 	module.exports = Login;
 
 /***/ },
-/* 233 */
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = __webpack_require__(234);
+	var Login = __webpack_require__(231);
+	var React = __webpack_require__(1);
+	var axios = __webpack_require__(280);
+
+	var LoginContainer = React.createClass({
+	  displayName: 'LoginContainer',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      data: []
+	    };
+	  },
+
+	  handleLoginSubmit: function handleLoginSubmit(credentials) {
+	    var _this = this;
+
+	    var email = credentials.email;
+	    var password = credentials.password;
+	    console.log(credentials);
+
+	    var url = 'http://localhost:3000/login?email=' + email + "&password=" + password;
+
+	    var request = new Request(url, {
+	      method: 'POST',
+	      mode: 'cors',
+	      headers: new Headers({
+	        'Content-Type': 'application/json'
+	      })
+	    });
+
+	    return fetch(request).then(function (response) {
+	      console.log(response);
+	      _this.setState(response.ok);
+	      return response.json();
+	    }).catch(function (error) {
+	      return error;
+	    });
+	    // $.ajax({
+	    //   url: 'http://localhost:3000/login?email=' + email + "&password=" + password,
+	    //   data: credentials,
+	    //   type: 'POST',
+	    //   crossDomain: true,
+	    //   success: function(data) {
+	    //     this.setState({data: data})
+	    //   }.bind(this),
+	    //   error: function() {
+	    //     console.error("unsuccessful")
+	    //   }
+	    // })
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(Login, { onLoginSubmit: this.handleLoginSubmit, loggedInStatus: this.state })
+	    );
+	  }
+	});
+
+	module.exports = LoginContainer;
 
 /***/ },
-/* 234 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var defaults = __webpack_require__(235);
-	var utils = __webpack_require__(236);
-	var dispatchRequest = __webpack_require__(237);
-	var InterceptorManager = __webpack_require__(245);
-	var isAbsoluteURL = __webpack_require__(246);
-	var combineURLs = __webpack_require__(247);
-	var bind = __webpack_require__(248);
-	var transformData = __webpack_require__(241);
+	module.exports = __webpack_require__(281);
+
+/***/ },
+/* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var defaults = __webpack_require__(282);
+	var utils = __webpack_require__(283);
+	var dispatchRequest = __webpack_require__(284);
+	var InterceptorManager = __webpack_require__(292);
+	var isAbsoluteURL = __webpack_require__(293);
+	var combineURLs = __webpack_require__(294);
+	var bind = __webpack_require__(295);
+	var transformData = __webpack_require__(288);
 
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -26376,7 +26427,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(249);
+	axios.spread = __webpack_require__(296);
 
 	// Expose interceptors
 	axios.interceptors = defaultInstance.interceptors;
@@ -26406,12 +26457,12 @@
 	});
 
 /***/ },
-/* 235 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
+	var utils = __webpack_require__(283);
 
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -26474,7 +26525,7 @@
 	};
 
 /***/ },
-/* 236 */
+/* 283 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26721,7 +26772,7 @@
 	};
 
 /***/ },
-/* 237 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -26744,10 +26795,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(238);
+	        adapter = __webpack_require__(285);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(238);
+	        adapter = __webpack_require__(285);
 	      }
 
 	      if (typeof adapter === 'function') {
@@ -26761,17 +26812,17 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 238 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
-	var buildURL = __webpack_require__(239);
-	var parseHeaders = __webpack_require__(240);
-	var transformData = __webpack_require__(241);
-	var isURLSameOrigin = __webpack_require__(242);
-	var btoa = window.btoa || __webpack_require__(243);
+	var utils = __webpack_require__(283);
+	var buildURL = __webpack_require__(286);
+	var parseHeaders = __webpack_require__(287);
+	var transformData = __webpack_require__(288);
+	var isURLSameOrigin = __webpack_require__(289);
+	var btoa = window.btoa || __webpack_require__(290);
 
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -26839,7 +26890,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(244);
+	    var cookies = __webpack_require__(291);
 
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ? cookies.read(config.xsrfCookieName) : undefined;
@@ -26887,12 +26938,12 @@
 	};
 
 /***/ },
-/* 239 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
+	var utils = __webpack_require__(283);
 
 	function encode(val) {
 	  return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
@@ -26951,12 +27002,12 @@
 	};
 
 /***/ },
-/* 240 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
+	var utils = __webpack_require__(283);
 
 	/**
 	 * Parse headers into an object
@@ -26995,12 +27046,12 @@
 	};
 
 /***/ },
-/* 241 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
+	var utils = __webpack_require__(283);
 
 	/**
 	 * Transform the data for a request or a response
@@ -27020,12 +27071,12 @@
 	};
 
 /***/ },
-/* 242 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
+	var utils = __webpack_require__(283);
 
 	module.exports = utils.isStandardBrowserEnv() ?
 
@@ -27088,7 +27139,7 @@
 	}();
 
 /***/ },
-/* 243 */
+/* 290 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27128,12 +27179,12 @@
 	module.exports = btoa;
 
 /***/ },
-/* 244 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
+	var utils = __webpack_require__(283);
 
 	module.exports = utils.isStandardBrowserEnv() ?
 
@@ -27186,12 +27237,12 @@
 	}();
 
 /***/ },
-/* 245 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var utils = __webpack_require__(236);
+	var utils = __webpack_require__(283);
 
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -27243,7 +27294,7 @@
 	module.exports = InterceptorManager;
 
 /***/ },
-/* 246 */
+/* 293 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27264,7 +27315,7 @@
 	};
 
 /***/ },
-/* 247 */
+/* 294 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27282,7 +27333,7 @@
 	};
 
 /***/ },
-/* 248 */
+/* 295 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27298,7 +27349,7 @@
 	};
 
 /***/ },
-/* 249 */
+/* 296 */
 /***/ function(module, exports) {
 
 	'use strict';

@@ -18,14 +18,16 @@ const LoginContainer = React.createClass({
 
     var request = new Request(url, {
       method: 'POST',
-      mode: 'no-cors',
+      mode: 'cors',
       headers: new Headers({
         'Content-Type': 'application/json'
-      })
+      }),
     })
 
     return fetch(request).then(response => {
-      console.log(response.ok)
+      console.log(response)
+      this.setState(response.ok)
+      return response.json();
     }).catch(error => {
       return error;
     });
@@ -46,7 +48,7 @@ const LoginContainer = React.createClass({
   render() {
     return (
       <div>
-        <Login onLoginSubmit = {this.handleLoginSubmit} />
+        <Login onLoginSubmit = {this.handleLoginSubmit} loggedInStatus = {this.state} />
       </div>
     )
   }

@@ -17,6 +17,7 @@ const Login = React.createClass({
     var email = this.state.email
     var password = this.state.password
     this.props.onLoginSubmit({email: email, password: password})
+      .then(console.log(this.props))
   },
 
   setValue: function(field, event) {
@@ -29,6 +30,7 @@ const Login = React.createClass({
     return (
       <div className='center form-container'>
         <h2>Log In</h2>
+        <div>{this.props.loggedInStatus}</div>
         <form onSubmit = {this.handleSubmit} >
           <label htmlFor="email">Email</label><br />
           <input type="text" name="email" id="email"
@@ -38,9 +40,7 @@ const Login = React.createClass({
           <input type="password" name="password" id="password"
           onChange = {this.setValue.bind(this, 'password')}
           ></input><br />
-          <Link to="ListContainer"><br />
-            <button type='button' className='btn btn-success' onClick={this.handleSubmit}>Submit</button>
-          </Link>
+            <button type='submit' className='btn btn-success' >Submit</button>
         </form>
       </div>
     )
